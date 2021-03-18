@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.eurosport.mobileapp"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation project(':domain')
+
+    //kotlin
+    implementation implt.kotlin.stdlib
+    implementation implt.androidx.app_compat
+    implementation implt.androidx.core_ktx
+    implementation implt.androidx.recyclerview
+
+
+    implementation implt.layout.constraint_layout
+    implementation implt.layout.material_design
+
+    //rx
+    implementation implt.rx.java2
+    implementation implt.rx.android2
+    implementation implt.rx.kotlin
+
+
+    //dagger
+    kapt implt.dagger.compiler
+    testImplementation implt.dagger.runtime
+    kaptAndroidTest implt.dagger.compiler
+    implementation implt.dagger.runtime
+    implementation implt.dagger.android
+    implementation implt.dagger.android_support
+    annotationProcessor implt.dagger.android_support_compiler
+    annotationProcessor implt.dagger.compiler
+    kapt implt.dagger.android_support_compiler
+    kapt implt.dagger.compiler
+
+    //hilt
+    implementation implt.hilt.android
+    kapt implt.hilt.compiler
+    implementation implt.hilt.lifecycle
+    //retrofit
+    implementation implt.retrofit.android
+    implementation implt.retrofit.adapter
+    implementation implt.retrofit.gson
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+
+}
