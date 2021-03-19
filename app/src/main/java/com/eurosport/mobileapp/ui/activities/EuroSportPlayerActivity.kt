@@ -7,6 +7,7 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import com.eurosport.mobileapp.R
+import com.eurosport.mobileapp.utils.Constants
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.util.Util
@@ -23,7 +24,7 @@ class EuroSportPlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_euro_sport_player)
-        url =intent.getStringExtra("URL")
+        url =intent.getStringExtra(Constants.URL)
     }
     private fun initializePlayer() {
         player = SimpleExoPlayer.Builder(this).build()
@@ -36,6 +37,7 @@ class EuroSportPlayerActivity : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
+        intent
         if (Util.SDK_INT >= 24) {
             initializePlayer()
         }

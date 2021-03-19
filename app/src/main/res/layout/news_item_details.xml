@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/news_item_shape_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/item_picture"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/news_item_height"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@android:drawable/sym_def_app_icon"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@android:drawable/ic_media_play"
+        app:layout_constraintBottom_toBottomOf="@+id/item_picture"
+        app:layout_constraintEnd_toEndOf="@+id/item_picture"
+        app:layout_constraintStart_toStartOf="@+id/item_picture"
+        app:layout_constraintTop_toTopOf="@+id/item_picture" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="15dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_picture"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/author_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:layout_marginStart="15dp"
+        android:textAllCaps="false"
+        />
+
+    <TextView
+        android:id="@+id/sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sport_shape_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="true"
+        android:layout_marginLeft="15dp"
+        tools:ignore="MissingConstraints"
+        android:text="fooooooot"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,10 +12,13 @@ import com.eurosport.domain.models.Story
 import com.eurosport.domain.models.Video
 import com.eurosport.mobileapp.R
 import com.eurosport.mobileapp.databinding.NewsItemBinding
+import com.eurosport.mobileapp.ui.activities.DetailsActivity
 import com.eurosport.mobileapp.ui.activities.EuroSportPlayerActivity
+import com.eurosport.mobileapp.utils.Constants
 import com.eurosport.mobileapp.utils.DateUtils
 import com.eurosport.mobileapp.utils.ObservableRecyclerViewAdapter
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.news_item_details.view.*
 
 
 class NewsListAdapter(val context: Context, news: ObservableList<News>) : ObservableRecyclerViewAdapter<News, NewsListAdapter.Holder>(news) {
@@ -43,9 +46,17 @@ class NewsListAdapter(val context: Context, news: ObservableList<News>) : Observ
                     val video =news as Video
                     if(video.url!=null)
                     {
-                        intent.putExtra("URL",video.url)
+                        intent.putExtra(Constants.URL,video.url)
                         context.startActivity(intent)
                     }
+            }
+            else
+            {
+                var intent =Intent(context, DetailsActivity::class.java)
+                val story =news as Story
+                intent.putExtra(Constants.STORY,story)
+                context.startActivity(intent)
+
             }
         })
 
@@ -56,27 +67,27 @@ class NewsListAdapter(val context: Context, news: ObservableList<News>) : Observ
 
         private fun bindCommonAttributes(news: News)
         {
-            binding.title.text = news.title
-            binding.sport.text=news.sport.name
+            binding.details.title.text = news.title
+            binding.details.sport.text=news.sport.name
         }
 
         fun bindVideo(video: Video)
         {
 
-            binding.play.visibility=View.VISIBLE
+            binding.details.play.visibility=View.VISIBLE
             bindCommonAttributes(video)
-            binding.authorView.text=  context.getString(R.string.views, video.views)
-            Picasso.get().load(video.thumb).into(binding.itemPicture)
+            binding.details.author_view.text=  context.getString(R.string.views, video.views)
+            Picasso.get().load(video.thumb).into(binding.details.item_picture)
         }
 
         fun binStory(story: Story)
         {
-            binding.play.visibility=View.GONE
+            binding.details.play.visibility=View.GONE
             bindCommonAttributes(story)
             var dateDifference = DateUtils.getDif(context, story.date)
 
-            binding.authorView.text= context.getString(R.string.author, story.author, dateDifference)
-         Picasso.get().load(story.image).into(binding.itemPicture)
+            binding.details.author_view.text= context.getString(R.string.author, story.author, dateDifference)
+             Picasso.get().load(story.image).into(binding.details.item_picture)
         }
     }
 }

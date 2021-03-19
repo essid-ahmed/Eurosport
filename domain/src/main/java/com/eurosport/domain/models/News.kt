@@ -1,6 +1,8 @@
 package com.eurosport.domain.models
 
-abstract class News
+import java.io.Serializable
+
+abstract class News : Serializable
 {
     abstract var  id:Int
     abstract var title : String
