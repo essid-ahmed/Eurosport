@@ -25,6 +25,8 @@ class MainActivity :AppCompatActivity(){
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
 
+        //a faire liveData
+
     }
     override fun onResume() {
         super.onResume()

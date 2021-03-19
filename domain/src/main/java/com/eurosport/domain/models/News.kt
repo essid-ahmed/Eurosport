@@ -4,6 +4,6 @@ abstract class News
 {
     abstract var  id:Int
     abstract var title : String
-    abstract var date :Long
+    abstract var date :String
     abstract var sport: Sport
 }

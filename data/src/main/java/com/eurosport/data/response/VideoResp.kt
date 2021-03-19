@@ -8,4 +8,4 @@ import com.eurosport.domain.models.Story
 import com.eurosport.domain.models.Video
 
 @Entity(tableName = "videos")
-data class VideoResp (@PrimaryKey var id:Int,  var title :String, var date :Long, var sport: SportResp, var url :String,  var views :Int, var thumb: String)
+data class VideoResp (@PrimaryKey var id:Int,  var title :String, var date :String, var sport: SportResp, var url :String,  var views :Int, var thumb: String)

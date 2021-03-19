@@ -6,4 +6,4 @@ import com.eurosport.domain.models.Sport
 
 
 @Entity(tableName = "stories")
-data class StoryResp ( @PrimaryKey var id:Int,  var title :String, var date :Long, var sport: SportResp,var image :String,var teaser :String,var author :String)
+data class StoryResp ( @PrimaryKey var id:Int,  var title :String, var date :String, var sport: SportResp,var image :String,var teaser :String,var author :String)
