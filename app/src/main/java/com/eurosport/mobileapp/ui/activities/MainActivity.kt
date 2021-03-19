@@ -1,5 +1,6 @@
-package com.eurosport.mobileapp.ui
+package com.eurosport.mobileapp.ui.activities
 
+import android.content.Context
 import android.os.Bundle
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eurosport.mobileapp.R
 import com.eurosport.mobileapp.databinding.ActivityMainBinding
+import com.eurosport.mobileapp.ui.adapter.NewsListAdapter
 import com.eurosport.mobileapp.viewmodels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -26,7 +28,7 @@ class MainActivity :AppCompatActivity(){
         binding.viewModel = viewModel
 
         //a faire liveData
-
+       setContext(this);
     }
     override fun onResume() {
         super.onResume()
@@ -41,14 +43,18 @@ class MainActivity :AppCompatActivity(){
         super.onPause()
     }
     companion object {
+        private lateinit var context: Context
+
+        fun setContext(con: Context) {
+            context=con
+        }
+
         @JvmStatic
         @BindingAdapter("adapter")
-        fun bindAlbumsList(@NonNull recyclerView: RecyclerView, viewModel: NewsViewModel) {
-            /*val adapter = AlbumsListAdapter(viewModel.newsFeed)
-            recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+        fun bindNewsList(@NonNull recyclerView: RecyclerView, viewModel: NewsViewModel) {
+            val adapter = NewsListAdapter(context,viewModel.news)
             recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
             recyclerView.adapter = adapter
-        */
         }
     }
 

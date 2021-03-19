@@ -1,39 +1,67 @@
 package com.eurosport.mobileapp.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ObservableList
 import androidx.recyclerview.widget.RecyclerView
 import com.eurosport.domain.models.News
+import com.eurosport.domain.models.Story
+import com.eurosport.domain.models.Video
+import com.eurosport.mobileapp.R
+import com.eurosport.mobileapp.databinding.NewsItemBinding
 import com.eurosport.mobileapp.utils.ObservableRecyclerViewAdapter
-import com.jommaa.domain.model.Album
-import com.jommaa.leboncoin.databinding.ListItemAlbumBinding
-import com.jommaa.leboncoin.utils.ObservableRecyclerViewAdapter
 import com.squareup.picasso.Picasso
 
-class NewsListAdapter(albums: ObservableList<News>) : ObservableRecyclerViewAdapter<News, NewsListAdapter.Holder>(albums) {
+
+class NewsListAdapter(val context:Context,news: ObservableList<News>) : ObservableRecyclerViewAdapter<News, NewsListAdapter.Holder>(news) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(
-            ListItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return Holder(context,
+            NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position))
+        val news =getItem(position)
+        if (news.isVideo())
+        {
+            holder.bindVideo(news as Video)
+        }
+        else
+        {
+            holder.binStory(news as Story)
+        }
+
     }
 
     class Holder(
-        private val binding: ListItemAlbumBinding) :
+        private val context: Context,
+        private val binding: NewsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private fun bindCommonAttributes(news: News)
+        {
+            binding.title.text = news.title
+            binding.sport.text=news.sport.name
 
-        private lateinit var album: Album
+        }
 
-        fun bind(album: Album) {
-            this.album = album
+        fun bindVideo(video: Video)
+        {
 
-            Picasso.get().load(album.thumbnailUrl).into(binding.image)
-            binding.name.text = album.title
+            binding.play.visibility=View.VISIBLE
+            bindCommonAttributes(video)
+            binding.authorView.text=  context.getString(R.string.views,video.views)
+            Picasso.get().load(video.thumb).into(binding.itemPicture)
+        }
+
+        fun binStory(story: Story)
+        {
+            binding.play.visibility=View.GONE
+            bindCommonAttributes(story)
+            binding.authorView.text=story.author
+         Picasso.get().load(story.image).into(binding.itemPicture)
         }
     }
 }

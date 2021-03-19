@@ -89,4 +89,14 @@ layout.constraint_layout="androidx.constraintlayout:constraintlayout:$versions.c
 layout.material_design="com.google.android.material:material:$versions.material_design"
 implt.layout=layout
 
+def exoplayer =[:]
+exoplayer.core="com.google.android.exoplayer:exoplayer-core:$versions.exoplayer"
+exoplayer.dash="com.google.android.exoplayer:exoplayer-dash:$versions.exoplayer"
+exoplayer.ui="com.google.android.exoplayer:exoplayer-ui:$versions.exoplayer"
+implt.exoplayer=exoplayer
+
+def picasso = [:]
+picasso.android="com.squareup.picasso:picasso:$versions.picasso"
+implt.picasso=picasso
+
 ext.implt = implt

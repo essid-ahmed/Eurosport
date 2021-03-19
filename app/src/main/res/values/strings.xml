@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">EuroSport</string>
     <string name="no_data_available">No data available.Please check your internet connexion</string>
+    <string name="views">%1$d views</string>
 </resources>

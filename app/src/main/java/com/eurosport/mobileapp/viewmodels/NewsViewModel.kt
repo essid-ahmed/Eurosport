@@ -3,7 +3,7 @@ package com.eurosport.mobileapp.viewmodels
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
-import com.eurosport.domain.models.NewsFeed
+import com.eurosport.domain.models.News
 import com.eurosport.domain.result.NewsResult
 import com.eurosport.domain.usecase.GetNewsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 open class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) : ViewModel() {
 
-    val newsFeed = ObservableArrayList<NewsFeed>()
+    val news = ObservableArrayList<News>()
     val disposables = CompositeDisposable()
     var  progressVisible = ObservableBoolean()
     var emptyMessageVisible = ObservableBoolean()
@@ -39,7 +39,7 @@ open class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNews
       emptyMessageVisible.set(false)
       when (result){
          is NewsResult.Success ->{
-             newsFeed.addAll(listOf(result.newsFeed))
+             news.addAll(result.newsList)
              emptyMessageVisible.set( false)
              progressVisible.set(false)
           }

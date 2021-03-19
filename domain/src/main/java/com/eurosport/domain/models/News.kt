@@ -6,4 +6,6 @@ abstract class News
     abstract var title : String
     abstract var date :String
     abstract var sport: Sport
+
+    abstract fun isVideo():Boolean
 }
