@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EuroSport">
-        <activity android:name=".ui.activities.EuroSportPlayerActivity"></activity>
+        <activity android:name=".ui.activities.DetailsActivity"></activity>
+        <activity android:name=".ui.activities.EuroSportPlayerActivity" />
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

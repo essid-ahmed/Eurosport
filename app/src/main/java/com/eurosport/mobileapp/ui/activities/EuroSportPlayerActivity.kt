@@ -7,6 +7,7 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import com.eurosport.mobileapp.R
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.util.Util
 import kotlinx.android.synthetic.main.activity_euro_sport_player.*
@@ -17,17 +18,21 @@ class EuroSportPlayerActivity : AppCompatActivity() {
     private var playWhenReady = true
     private var currentWindow = 0
     private var playbackPosition: Long = 0
+    private var url : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_euro_sport_player)
+        url =intent.getStringExtra("URL")
     }
     private fun initializePlayer() {
         player = SimpleExoPlayer.Builder(this).build()
         video_view.setPlayer(player)
-      /*  player.setPlayWhenReady(playWhenReady);
-        player.seekTo(currentWindow, playbackPosition);
-        player.prepare();*/
+        val mediaItem: MediaItem = MediaItem.fromUri(url!!)
+        player!!.setMediaItem(mediaItem)
+        player!!.playWhenReady=playWhenReady
+        player!!.seekTo(currentWindow, playbackPosition)
+        player!!.prepare();
     }
     override fun onStart() {
         super.onStart()

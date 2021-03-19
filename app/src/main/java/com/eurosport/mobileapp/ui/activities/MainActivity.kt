@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.eurosport.domain.models.News
 import com.eurosport.mobileapp.R
 import com.eurosport.mobileapp.databinding.ActivityMainBinding
 import com.eurosport.mobileapp.ui.adapter.NewsListAdapter
@@ -26,9 +26,7 @@ class MainActivity :AppCompatActivity(){
         viewModel= ViewModelProvider(this,viewModelFactory).get(NewsViewModel::class.java)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
-
-        //a faire liveData
-       setContext(this);
+        setContext(this);
     }
     override fun onResume() {
         super.onResume()
@@ -57,5 +55,4 @@ class MainActivity :AppCompatActivity(){
             recyclerView.adapter = adapter
         }
     }
-
 }

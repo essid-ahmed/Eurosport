@@ -9,6 +9,7 @@
     />
 </data>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/news_item_shape_bg">
@@ -53,7 +54,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:layout_marginStart="15dp"
-        tools:text="ESSID Ahmed" />
+        android:textAllCaps="false"
+        />
 
     <TextView
         android:id="@+id/sport"
@@ -65,9 +67,12 @@
         android:padding="5dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="true"
+        android:layout_marginLeft="15dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="15dp"
-        tools:text="foooooooooot" />
+        android:text="fooooooot"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     </layout>
