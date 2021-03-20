@@ -1,44 +1,56 @@
 package com.eurosport.mobileapp.utils
 
 import android.content.Context
-import java.sql.Timestamp
+import android.text.format.DateFormat
+import org.joda.time.*
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
+import java.util.*
 
 
 class DateUtils {
     companion object DateUtil{
         fun getDif(context: Context, publishDate: String) : String
         {
-            val publishTimesTamp= Timestamp(publishDate.toBigDecimal().toLong())
-            val nowTimesTamp = Timestamp(System.currentTimeMillis())
-            // get time difference in seconds
-            val milliseconds: Long = nowTimesTamp.time - publishTimesTamp.time
 
-            val seconds = milliseconds.toInt() / 1000
-            val hours = seconds / 3600
-            val minutes = seconds % 3600 / 60
+            val formatter: DateTimeFormatter = DateTimeFormat.forPattern("dd-MM-yyyy")
 
-            if(seconds in 1..59)
+            val stringDate = getDate(publishDate.toBigDecimal().toLong())
+            val startDate: DateTime =formatter.parseDateTime(stringDate)
+
+            val endDate = DateTime()
+            val days = Days.daysBetween(startDate,endDate)
+            val years =Years.yearsBetween(startDate,endDate)
+            val hours = Hours.hoursBetween(startDate,endDate)
+            val minutes =Minutes.minutesBetween(startDate,endDate)
+            val months =Months.monthsBetween(startDate,endDate)
+            val seconds =Seconds.secondsBetween(startDate,endDate)
+            if(years>Years.ZERO)
             {
-                return "$seconds seconds"
+                return "${years.years} years ago"
             }
-            if(minutes in 1..59)
+            if(months>Months.ZERO)
             {
-                return "$minutes minutes"
+                return "${months.months} months ago"
             }
-            if(hours in 1..24)
+            if(days>Days.ZERO)
             {
-                return "$hours hours"
+                return "${days.days} days ago"
             }
-            /*if(days in 1..30)
+            if(hours>Hours.ZERO)
             {
-                return "$days days"
+                return "${hours.hours} hours ago"
             }
-            if(months in 1..12)
+            if(minutes>Minutes.ZERO)
             {
-                return "$months months"
-            }*/
-            //return "$years years"
-        return "001";
+                return "${minutes.minutes} minutes ago"
+            }
+            return "${seconds.seconds} seconds ago"
+        }
+        private fun getDate(time: Long): String? {
+            val cal = Calendar.getInstance(Locale.ENGLISH)
+            cal.timeInMillis = time * 1000
+            return DateFormat.format("dd-MM-yyyy", cal).toString()
         }
     }
 }
