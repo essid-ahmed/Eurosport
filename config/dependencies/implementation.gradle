@@ -35,14 +35,6 @@ room.guava="androidx.room:room-guava:$versions.room"
 room.kotlin="androidx.room:room-ktx:$versions.room"
 implt.room = room
 
-def lifecycle = [:]
-lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
-lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
-lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
-lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
-lifecycle.livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
-androidx.lifecycle = lifecycle
-
 def arch = [:]
 arch.core_runtime = "androidx.arch.core:core-runtime:$versions.arch_core"
 androidx.arch = arch
@@ -51,7 +43,7 @@ androidx.core = "androidx.test:core:$versions.atsl_core"
 androidx.ext_junit = "androidx.test.ext:junit:$versions.atsl_junit"
 androidx.runner = "androidx.test:runner:$versions.atsl_runner"
 androidx.rules = "androidx.test:rules:$versions.atsl_rules"
-
+androidx.multidex ="androidx.multidex:multidex:$versions.multidex"
 implt.androidx = androidx
 
 def dagger = [:]
@@ -74,11 +66,6 @@ retrofit.adapter="com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 retrofit.android="com.squareup.retrofit2:retrofit:$versions.retrofit"
 implt.retrofit = retrofit
 
-def okio = [:]
-okio.okio = "com.squareup.okio:okio:$versions.okio_version"
-implt.okio = okio
-
-
 def google =[:]
 google.gson="com.google.code.gson:gson:$versions.gson"
 
@@ -87,6 +74,7 @@ implt.google=google
 def layout =[:]
 layout.constraint_layout="androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 layout.material_design="com.google.android.material:material:$versions.material_design"
+layout.rounded_image_view="com.joooonho:selectableroundedimageview:$versions.rounded_image_view"
 implt.layout=layout
 
 def exoplayer =[:]

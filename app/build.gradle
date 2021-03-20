@@ -38,7 +38,6 @@ android {
         enabled true
     }
 }
-def multidex_version = "2.0.1"
 
 dependencies {
     implementation project(':domain')
@@ -49,6 +48,7 @@ dependencies {
     implementation implt.androidx.app_compat
     implementation implt.androidx.core_ktx
     implementation implt.androidx.recyclerview
+    implementation implt.androidx.multidex
 
     implementation implt.exoplayer.core
     implementation implt.exoplayer.dash
@@ -58,11 +58,13 @@ dependencies {
 
     implementation implt.layout.constraint_layout
     implementation implt.layout.material_design
+    implementation implt.layout.rounded_image_view
 
     //rx
     implementation implt.rx.java2
     implementation implt.rx.android2
     implementation implt.rx.kotlin
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 
 
     //dagger
@@ -90,7 +92,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation "androidx.multidex:multidex:$multidex_version"
 
 
 

@@ -3,4 +3,5 @@
     <string name="no_data_available">No data available.Please check your internet connexion</string>
     <string name="views">%1$d views</string>
     <string name="author">By %1$S - %2$S</string>
+    <string name="main_action_bar_title">Featured</string>
 </resources>
