@@ -87,4 +87,8 @@ def picasso = [:]
 picasso.android="com.squareup.picasso:picasso:$versions.picasso"
 implt.picasso=picasso
 
+def joda = [:]
+joda.android="net.danlew:android.joda:$versions.joda_time"
+implt.joda=joda
+
 ext.implt = implt

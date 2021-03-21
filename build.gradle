@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext.kotlin_version = '1.5.0-M1'
     apply from: '/config/versionning.gradle'
     apply from: '/config/dependencies/classpath.gradle'
     apply from: '/config/dependencies/implementation.gradle'
@@ -15,6 +16,7 @@ buildscript {
         classpath class_path.android_gradle_plugin
         classpath class_path.kotlin.plugin
         classpath class_path.hitl
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
     }
 }

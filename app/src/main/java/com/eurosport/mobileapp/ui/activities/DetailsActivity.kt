@@ -6,6 +6,7 @@ import android.view.View
 import com.eurosport.domain.models.Story
 import com.eurosport.mobileapp.R
 import com.eurosport.mobileapp.utils.Constants
+import com.eurosport.mobileapp.utils.DateUtils
 import com.joooonho.SelectableRoundedImageView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
@@ -25,7 +26,7 @@ class DetailsActivity : AppCompatActivity() {
         Picasso.get().load(story.image).into(imageView)
         item_details.title.text = story.title
         item_details.sport.text=story.sport.name
-        item_details.author_view.text= getString(R.string.author, story.author, "0 minutes")
+        item_details.author_view.text= getString(R.string.author, story.author, DateUtils.getDif(this,story.date))
         description.text=story.teaser
         back.setOnClickListener { finish() }
     }
