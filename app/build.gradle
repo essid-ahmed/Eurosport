@@ -96,13 +96,21 @@ dependencies {
     implementation implt.joda.android
 
 
-    testImplementation test_implt.junit
-    testImplementation test_implt.andrdx.espresso_core
-    testImplementation test_implt.mockito.core
+  //  testImplementation test_implt.junit
+   // testImplementation test_implt.andrdx.espresso_core
+   // testImplementation test_implt.mockito.core
 
-    androidTestImplementation test_implt.andrdx.ext_junit
-    androidTestImplementation test_implt.andrdx.espresso_core
-    androidTestImplementation test_implt.mockito.core
+ //   androidTestImplementation test_implt.andrdx.ext_junit
+  //  androidTestImplementation test_implt.andrdx.espresso_core
+   // androidTestImplementation test_implt.mockito.core
+
+    //nhaarman
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+
+    //Junit
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    testImplementation "org.mockito:mockito-inline:3.8.0"
 }
 repositories {
     mavenCentral()

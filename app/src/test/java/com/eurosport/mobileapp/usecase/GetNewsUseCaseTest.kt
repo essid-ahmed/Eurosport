@@ -9,9 +9,9 @@ import com.eurosport.domain.repository.INewsRepository
 import com.eurosport.domain.result.NewsResult
 import com.eurosport.domain.usecase.GetNewsUseCase
 import com.eurosport.mobileapp.rx.RxJavaTestHooksResetRule
-import com.nhaarman.mockitokotlin2.given
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockito_kotlin.given
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
 
 import io.reactivex.Single
 import org.junit.Before
@@ -64,7 +64,7 @@ class GetNewsUseCaseTest {
     given(iNewsRepository.getNewsFeed()).willReturn(Single.just(newsFeed))
 
     sut.execute().test()
-      .assertValue { (it as NewsResult.Success).newsList == newsList}
+      .assertValueAt(1) { (it as NewsResult.Success).newsList == newsList}
   }
 
   @Test
@@ -80,6 +80,6 @@ class GetNewsUseCaseTest {
     given(iNewsRepository.getNewsFeed()).willReturn(Single.error(throwable))
     given(iNewsRepository.getLocalNewsFeed()).willReturn(newsFeed)
 
-    sut.execute().test().assertValue{(it as NewsResult.Success).newsList==newsList}
+    sut.execute().test().assertValueAt(1){(it as NewsResult.Success).newsList==newsList}
   }
 }
