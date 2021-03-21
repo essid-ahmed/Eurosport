@@ -7,12 +7,10 @@ def class_path = [:]
 
 def kotlin = [:]
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
 class_path.kotlin = kotlin
 
 
-class_path.navigation_safe_args_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
 
 class_path.android_gradle_plugin = "com.android.tools.build:gradle:$versions.androidGradlePlugin"
 

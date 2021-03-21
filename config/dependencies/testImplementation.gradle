@@ -12,13 +12,10 @@ test_implt.junit = "junit:junit:$versions.junit"
 def andrdx = [:]
 andrdx.ext_junit = "androidx.test.ext:junit:$versions.andrdx_test_junit"
 andrdx.espresso_core = "androidx.test.espresso:espresso-core:$versions.andrdx_test_espresso"
-andrdx.arch_core_testing = "androidx.arch.core:core-testing:$versions.arch_core"
 test_implt.andrdx = andrdx
 
 def mockito = [:]
-mockito.core = "org.mockito:mockito-core:$versions.mockito"
-mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
-mockito.android = "org.mockito:mockito-android:$versions.mockito_android"
+mockito.core = "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito"
 test_implt.mockito = mockito
 
 ext.test_implt = test_implt

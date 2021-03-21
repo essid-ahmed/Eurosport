@@ -59,8 +59,6 @@ dependencies {
     annotationProcessor implt.dagger.compiler
     kapt implt.dagger.android_support_compiler
     kapt implt.dagger.compiler
-    implementation "androidx.core:core-ktx:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()

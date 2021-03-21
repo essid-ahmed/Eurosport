@@ -38,6 +38,9 @@ android {
     dataBinding {
         enabled true
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -89,15 +92,17 @@ dependencies {
     implementation implt.retrofit.adapter
     implementation implt.retrofit.gson
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation implt.joda.android
-    implementation "androidx.core:core-ktx:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
+    testImplementation test_implt.junit
+    testImplementation test_implt.andrdx.espresso_core
+    testImplementation test_implt.mockito.core
+
+    androidTestImplementation test_implt.andrdx.ext_junit
+    androidTestImplementation test_implt.andrdx.espresso_core
+    androidTestImplementation test_implt.mockito.core
 }
 repositories {
     mavenCentral()
