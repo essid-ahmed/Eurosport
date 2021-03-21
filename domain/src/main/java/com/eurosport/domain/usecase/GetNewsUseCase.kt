@@ -21,8 +21,8 @@ class GetNewsUseCase @Inject constructor(val repo: INewsRepository){
 
     private fun onSuccessGettingNews(newsFeed: NewsFeed) : NewsResult{
         var newsResultList =ArrayList<News>()
-        repo.putNews(newsFeed).subscribeOn(Schedulers.io())
-            .subscribe({ Log.e("Success","false")},{})
+        repo.putNews(newsFeed)?.let{it.subscribeOn(Schedulers.io())
+            .subscribe({},{})}
         newsResultList.addAll(newsFeed.videos)
         newsResultList.addAll(newsFeed.stories)
         newsResultList.sortBy { it.date }
